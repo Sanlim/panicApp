@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "938961902981",
+    "firebase_url": "https://pdpa-319cd.firebaseio.com",
+    "project_id": "pdpa-319cd",
+    "storage_bucket": "pdpa-319cd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:938961902981:android:42e37e93ae3e8d9670b8ec",
+        "android_client_info": {
+          "package_name": "com.panicapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "938961902981-0fch184ko0dg1bnfbu7kgcoubu3akgbu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjD3oq29XMzy8XgFT7JztDfWFpnVX_NpA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "938961902981-0fch184ko0dg1bnfbu7kgcoubu3akgbu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
