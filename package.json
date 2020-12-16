@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/checkbox": "^0.5.5",
+    "@react-native-community/masked-view": "^0.1.10",
     "@react-native-community/picker": "^1.8.1",
     "@react-native-firebase/app": "^8.4.7",
     "@react-native-firebase/auth": "^9.3.2",
@@ -23,6 +24,9 @@
     "@react-navigation/stack": "^5.12.3",
     "react": "16.13.1",
     "react-native": "0.63.3",
+    "react-native-chart": "^1.0.8-beta",
+    "react-native-chart-kit": "^6.8.1",
+    "react-native-gesture-handler": "^1.8.0",
     "react-native-letter-spacing": "^0.0.6",
     "react-native-material-dropdown": "^0.11.1",
     "react-native-onboarding-swiper": "^1.1.4",
@@ -31,9 +35,12 @@
     "react-native-reanimated": "^1.13.1",
     "react-native-safe-area-context": "^3.1.8",
     "react-native-screens": "^2.13.0",
+    "react-native-svg": "^12.1.0",
     "react-native-tab-view": "^2.15.2",
+    "react-native-table-component": "^1.2.1",
     "react-native-vector-icons": "^7.1.0",
-    "react-native-webview": "^10.10.0"
+    "react-native-webview": "^10.10.0",
+    "victory-native": "^35.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
@@ -46,6 +53,12 @@
     "react-test-renderer": "16.13.1"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "transformIgnorePatterns": [
+      "node_modules/(?!victory|react-native-svg|react-native)"
+    ],
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
   }
 }
