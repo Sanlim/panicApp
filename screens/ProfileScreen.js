@@ -6,7 +6,6 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { AuthContext } from '../navigation/AuthProvider';
 import Email from '../screens/SigninScreen';
 
-
 const ProfileScreen = () => {
   const {user, logout} = useContext(AuthContext);
 
@@ -40,7 +39,7 @@ const ProfileScreen = () => {
         </View>
         <View style={styles.row}>
           <Icon name="email" color="#777777" size={20} />
-          <Text style={{ color: "#777777", marginLeft: 20 }}>sanlim.nisoy@email.com</Text>
+          <Text style={{ color: "#777777", marginLeft: 20 }}></Text>
         </View>
       </View>
 

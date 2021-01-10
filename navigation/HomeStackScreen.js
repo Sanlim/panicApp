@@ -7,6 +7,9 @@ import AppointmentScreen from '../screens/AppointmentScreen';
 import ReportScreen from '../screens/ReportScreen';
 import SummarySymtompsScreen from '../screens/SummarySymtompsScreen';
 
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { View } from 'react-native';
+
 const Stack = createStackNavigator();
 
 const HomeStackScreen = () => {
@@ -21,12 +24,58 @@ const HomeStackScreen = () => {
                 <Stack.Screen
                     name="DrugRemind"
                     component={DrugRemindScreen}
-                    options={{ header: () => null }}
+                    options={({ navigation }) => ({
+                        title: 'เตือนกินยา',
+                        headerTitleAlign: 'center',
+                        headerTitleStyle: {
+                            fontSize: 22,
+                            fontWeight: 'bold'
+                        },
+                        headerStyle: {
+                            backgroundColor: '#f9fafd',
+                            shadowColor: '#f9fafd',
+                            elevation: 0,
+                        },
+                        headerLeft: () => (
+                            <View style={{ marginLeft: 10 }}>
+                                <FontAwesome.Button
+                                    name="long-arrow-left"
+                                    size={25}
+                                    backgroundColor="#f9fafd"
+                                    color="#333"
+                                    onPress={() => navigation.goBack()}
+                                />
+                            </View>
+                        ),
+                    })}
                 />
                 <Stack.Screen
                     name="Appointment"
                     component={AppointmentScreen}
-                    options={{ header: () => null }}
+                    options={({ navigation }) => ({
+                        title: 'เตือนนัดพบแพทย์',
+                        headerTitleAlign: 'center',
+                        headerTitleStyle: {
+                            fontSize: 22,
+                            fontWeight: 'bold'
+                        },
+                        headerStyle: {
+                            backgroundColor: '#f9fafd',
+                            shadowColor: '#f9fafd',
+                            elevation: 0,
+                        },
+                        headerLeft: () => (
+                            <View style={{ marginLeft: 10 }}>
+                                <FontAwesome.Button
+                                    name="long-arrow-left"
+                                    size={25}
+                                    backgroundColor="#f9fafd"
+                                    color="#333"
+                                    onPress={() => navigation.goBack()}
+                                />
+                            </View>
+                        ),
+                    })}
                 />
                 <Stack.Screen
                     name="Report"

@@ -75,7 +75,7 @@ const PanicTestScreen = ({navigation}) => {
 
                         <View style={styles.checkBoxContainer}>
                             <CheckBoxes />
-                            <Text style={styles.text}>9 รู้สึกเหมือนตกอยู่ในควาฝันเหมือน{'\n'}ไม่เป็นตัวของตัวเอง</Text>
+                            <Text style={styles.text}>9 รู้สึกเหมือนตกอยู่ในความฝันเหมือน{'\n'}ไม่เป็นตัวของตัวเอง</Text>
                         </View>
 
                         <View style={styles.checkBoxContainer}>

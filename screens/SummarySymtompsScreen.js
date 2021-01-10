@@ -1,13 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import Table from '../components/Table';
 import { DataTable } from 'react-native-paper';
 
-const SummarySymtompsScreen = ({navigation}) => {
+const SummarySymtompsScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
-            <View style={{alignItems: 'center'}}>
-                <Text style={{fontSize: 18, fontWeight: 'bold'}}>สรุปอาการ</Text>
+            <View style={{ alignItems: 'center' }}>
+                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>สรุปอาการ</Text>
 
             </View>
             <DataTable>
@@ -17,53 +16,58 @@ const SummarySymtompsScreen = ({navigation}) => {
                 </DataTable.Header>
 
                 <DataTable.Row>
-                    <DataTable.Cell>อาการที่ 1</DataTable.Cell>
+                    <DataTable.Cell>ใจเต้นเร็วและรัว</DataTable.Cell>
+                    <DataTable.Cell numeric>2</DataTable.Cell>
+                </DataTable.Row>
+
+                <DataTable.Row>
+                    <DataTable.Cell>เหงื่อแตก</DataTable.Cell>
+                    <DataTable.Cell numeric>4</DataTable.Cell>
+                </DataTable.Row>
+
+                <DataTable.Row>
+                    <DataTable.Cell>ตัวสั่น</DataTable.Cell>
+                    <DataTable.Cell numeric>1</DataTable.Cell>
+                </DataTable.Row>
+
+                <DataTable.Row>
+                    <DataTable.Cell>หายใจได้แบบสั้นๆ</DataTable.Cell>
+                    <DataTable.Cell numeric>3</DataTable.Cell>
+                </DataTable.Row>
+
+                <DataTable.Row>
+                    <DataTable.Cell>หายใจติดขัดไม่สะดวก</DataTable.Cell>
                     <DataTable.Cell numeric>5</DataTable.Cell>
                 </DataTable.Row>
 
                 <DataTable.Row>
-                    <DataTable.Cell>อาการที่ 2</DataTable.Cell>
-                    <DataTable.Cell numeric>5</DataTable.Cell>
+                    <DataTable.Cell>รู้สึกมึนงง</DataTable.Cell>
+                    <DataTable.Cell numeric>4</DataTable.Cell>
                 </DataTable.Row>
 
                 <DataTable.Row>
-                    <DataTable.Cell>อาการที่ 3</DataTable.Cell>
-                    <DataTable.Cell numeric>5</DataTable.Cell>
+                    <DataTable.Cell>รู้สึกหนาวๆร้อนๆ</DataTable.Cell>
+                    <DataTable.Cell numeric>6</DataTable.Cell>
                 </DataTable.Row>
 
                 <DataTable.Row>
-                    <DataTable.Cell>อาการที่ 4</DataTable.Cell>
-                    <DataTable.Cell numeric>5</DataTable.Cell>
+                    <DataTable.Cell>ตัวชาหรือเป็นเหน็บ</DataTable.Cell>
+                    <DataTable.Cell numeric>2</DataTable.Cell>
                 </DataTable.Row>
 
                 <DataTable.Row>
-                    <DataTable.Cell>อาการที่ 5</DataTable.Cell>
-                    <DataTable.Cell numeric>5</DataTable.Cell>
+                    <DataTable.Cell>รู้สึกเหมือนตกอยู่ในความฝัน</DataTable.Cell>
+                    <DataTable.Cell numeric>6</DataTable.Cell>
                 </DataTable.Row>
 
                 <DataTable.Row>
-                    <DataTable.Cell>อาการที่ 6</DataTable.Cell>
-                    <DataTable.Cell numeric>5</DataTable.Cell>
+                    <DataTable.Cell>กลัวที่จะเสียสติ</DataTable.Cell>
+                    <DataTable.Cell numeric>1</DataTable.Cell>
                 </DataTable.Row>
 
                 <DataTable.Row>
-                    <DataTable.Cell>อาการที่ 7</DataTable.Cell>
-                    <DataTable.Cell numeric>5</DataTable.Cell>
-                </DataTable.Row>
-
-                <DataTable.Row>
-                    <DataTable.Cell>อาการที่ 8</DataTable.Cell>
-                    <DataTable.Cell numeric>5</DataTable.Cell>
-                </DataTable.Row>
-
-                <DataTable.Row>
-                    <DataTable.Cell>อาการที่ 9</DataTable.Cell>
-                    <DataTable.Cell numeric>5</DataTable.Cell>
-                </DataTable.Row>
-
-                <DataTable.Row>
-                    <DataTable.Cell>อาการที่ 10</DataTable.Cell>
-                    <DataTable.Cell numeric>5</DataTable.Cell>
+                    <DataTable.Cell>กลัวว่าอาจตายได้</DataTable.Cell>
+                    <DataTable.Cell numeric>0</DataTable.Cell>
                 </DataTable.Row>
 
             </DataTable>
@@ -73,13 +77,7 @@ const SummarySymtompsScreen = ({navigation}) => {
                 onPress={() => navigation.goBack()}
             >
                 <View style={styles.button} >
-                    <Text style={{
-                        fontSize: 20,
-                        fontWeight: 'bold'
-                    }}
-                    >
-                        กลับ
-                            </Text>
+                    <Text style={{ fontSize: 20, fontWeight: 'bold' }}>กลับ</Text>
                 </View>
             </TouchableOpacity>
         </View>

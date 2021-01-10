@@ -5,9 +5,14 @@ import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-nati
 import CheckBoxes from '../components/CheckBox';
 import DropdownPicker from '../components/DropdownPicker';
 
+const RecordScreen = ({ navigation}) => {
+    const [check, setCheck] = useState(0);
 
-const RecordScreen = ({navigation}) => {
-    const [check, setCheck] = useState(false);
+    const [count, setCount] = useState(0);
+    const onPress = () => setCount(prevCount => prevCount + 1);
+
+     
+
     return (
         <ScrollView>
             <View style={styles.container}>
@@ -24,9 +29,9 @@ const RecordScreen = ({navigation}) => {
                         >บันทึกอาการ</Text>
 
                         <View style={styles.checkBoxContainer}>
-                                <Text style={styles.text}>อาการที่เกิดขึ้น</Text>
-                                <Text>                                         </Text>
-                                <Text style={styles.text}>ความรุนแรง</Text>
+                            <Text style={styles.text}>อาการที่เกิดขึ้น</Text>
+                            <Text>                                         </Text>
+                            <Text style={styles.text}>ความรุนแรง</Text>
                         </View>
 
                         <View style={styles.checkBoxContainer}>
@@ -112,7 +117,7 @@ const RecordScreen = ({navigation}) => {
                         <View style={styles.checkBoxContainer}>
                             <CheckBoxes />
                             <View style={styles.textContainer}>
-                                <Text style={styles.text}>9 รู้สึกเหมือนตกอยู่ในควาฝันเหมือนไม่เป็นตัวของตัวเอง</Text>
+                                <Text style={styles.text}>9 รู้สึกเหมือนตกอยู่ในความฝันเหมือนไม่เป็นตัวของตัวเอง</Text>
                             </View>
                             <View style={styles.pickerContainer}>
                                 <DropdownPicker />
@@ -139,15 +144,15 @@ const RecordScreen = ({navigation}) => {
                             </View>
                         </View>
                         <TouchableOpacity
-                                activeOpacity={0.6}
-                                onPress={() => navigation.navigate("Report")}
-                            >
-                                <View>
-                                    <Text style={{ fontSize: 20, fontWeight: 'bold',textDecorationLine: 'underline' }}>
-                                        แสดงกราฟความสัมพันธ์ของอาการและระดับความรุนแรง
+                            activeOpacity={0.6}
+                            onPress={() => navigation.navigate("Report")}
+                        >
+                            <View>
+                                <Text style={{ fontSize: 20, fontWeight: 'bold', textDecorationLine: 'underline' }}>
+                                    แสดงกราฟความสัมพันธ์ของอาการและระดับความรุนแรง
                                     </Text>
-                                </View>
-                            </TouchableOpacity>
+                            </View>
+                        </TouchableOpacity>
                     </View>
                     <TouchableOpacity
                         activeOpacity={0.6}

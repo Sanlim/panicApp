@@ -1,17 +1,26 @@
-import React, { useState } from 'react';
-import CheckBox from '@react-native-community/checkbox';
+import React, { useCallback } from 'react';
+import { Checkbox } from 'react-native-paper';
+import { useFocusEffect } from '@react-navigation/native';
 
-const CheckBoxes = () => {
-    const [toggleCheckBox, setToggleCheckBox] = useState(false);
+const Checkboxes = () => {
+  const [checked, setChecked] = React.useState(false);
 
-    return (
-        <CheckBox
-            disabled={false}
-            value={toggleCheckBox}
-            onValueChange={(newValue) =>
-                setToggleCheckBox(newValue)}
-        />
-    );
-}
+  useFocusEffect(
+    useCallback(() => {
+      return () => {
+        setChecked(false);
+      };
+    }, [])
+  );
 
-export default CheckBoxes;
+  return (
+    <Checkbox
+      status={checked ? 'checked' : 'unchecked'}
+      onPress={() => {
+        setChecked(!checked);
+      }}
+    />
+  );
+};
+
+export default Checkboxes;

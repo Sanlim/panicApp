@@ -1,33 +1,44 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { TextInput } from 'react-native-gesture-handler';
+import { StyleSheet, Text, TouchableOpacity, View, TextInput } from 'react-native';
+import { windowHeight, windowWidth } from '../utils/Dimensions';
 //import { TextInput } from 'react-native-paper';
 
+import FormInput from '../components/FormInput';
+import CustomDatePicker from '../components/DatePicker';
 
 const DrugRemindScreen = ({ navigation }) => {
-    const [pill, setPill] = useState();
-    const [time, setTime] = useState();
-
-    const addPill = () => {
-
-    }
 
     return (
         <View style={styles.container}>
-            <Text style={{fontSize: 20, fontWeight: 'bold'}}>เตือนกินยา</Text>
-            
-                <Text>ชื่อยา</Text>
-                <Text>ปริมาณ </Text>
-                <Text>เวลา  น.</Text>
-                <TouchableOpacity
-                    activeOpacity={0.6}
-                    onPress={() => navigation.navigate("Report")}
-                >
-                    <View style={styles.button} >
-                        <Text style={{ fontSize: 20, fontWeight: 'bold' }}>บันทึก</Text>
-                    </View>
-                </TouchableOpacity>
-            
+            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>ข้อมูลยา</Text>
+
+            <TextInput
+                style={styles.inputField}
+                numberOfLines={1}
+                placeholder="ชื่อยา"
+                placeholderTextColor="#666"
+            />
+            <TextInput
+                style={styles.inputField}
+                numberOfLines={1}
+                placeholder="ปริมาณ(กี่เม็ด)"
+                placeholderTextColor="#666"
+            />
+            <TextInput
+                style={styles.inputField}
+                numberOfLines={1}
+                placeholder="เวลา"
+                placeholderTextColor="#666"
+            />
+            <TouchableOpacity
+                activeOpacity={0.6}
+                onPress={() => navigation.navigate("Report")}
+            >
+                <View style={styles.button} >
+                    <Text style={{ fontSize: 20, fontWeight: 'bold' }}>บันทึก</Text>
+                </View>
+            </TouchableOpacity>
+
         </View>
     );
 };
@@ -55,7 +66,19 @@ const styles = StyleSheet.create({
         color: '#333',
         justifyContent: 'center',
         alignItems: 'center',
-      },
+
+    },
+    inputField: {
+        padding: 10,
+        marginTop: 5,
+        marginBottom: 10,
+        width: windowWidth / 1.5,
+        height: windowHeight / 15,
+        fontSize: 16,
+        borderRadius: 8,
+        borderWidth: 1,
+        backgroundColor: '#FFFFFF'
+    }
 });
 
 export default DrugRemindScreen;
