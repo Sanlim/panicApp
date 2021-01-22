@@ -12,41 +12,43 @@ const SigninScreen = ({ navigation }) => {
 
   const { login } = useContext(AuthContext);
 
-return (
-  <View style={styles.container}>
-    <Image
-      //source={require('../assets/logo.png')}
-      style={styles.logo}
-    />
-    <Text style={styles.text}>แอปพลิเคชันช่วยผู้ป่วยโรคแพนิค</Text>
+  return (
+    <View style={styles.container}>
+      <Image
+        //source={require('../assets/logo.png')}
+        style={styles.logo}
+      />
+      <Text style={styles.text}>แอปพลิเคชันช่วยผู้ป่วยโรคแพนิค</Text>
 
-    <FormInput
-      labelValue={email}
-      onChangeText={(userEmail) => setEmail(userEmail)}
-      placeholderText="อีเมล"
-      iconType="user"
-      keyboardType="email-address"
-      autoCapitalize="none"
-      autoCorrect={false}
-    />
+      <FormInput
+        labelValue={email}
+        onChangeText={(userEmail) => setEmail(userEmail)}
+        placeholderText="อีเมล"
+        iconType="user"
+        keyboardType="email-address"
+        autoCapitalize="none"
+        autoCorrect={false}
+      />
 
-    <FormInput
-      labelValue={password}
-      onChangeText={(userPassword) => setPassword(userPassword)}
-      placeholderText="รหัสผ่าน"
-      iconType="lock"
-      secureTextEntry={true}
-    />
+      <FormInput
+        labelValue={password}
+        onChangeText={(userPassword) => setPassword(userPassword)}
+        placeholderText="รหัสผ่าน"
+        iconType="lock"
+        secureTextEntry={true}
+      />
 
-    <FormButton
-      buttonTitle="เข้าสู่ระบบ"
-      onPress={() => login(email, password)}
-    />
+      <FormButton
+        buttonTitle="เข้าสู่ระบบ"
+        onPress={() => login(email, password)}
+      />
+      
+      {/*
+      <TouchableOpacity style={styles.forgotButton} onPress={() => { }}>
+        <Text style={styles.navButtonText}>ลืมรหัสผ่าน?</Text>
+      </TouchableOpacity>
 
-    <TouchableOpacity style={styles.forgotButton} onPress={() => { }}>
-      <Text style={styles.navButtonText}>ลืมรหัสผ่าน?</Text>
-    </TouchableOpacity>
-
+      
     <SocialButton
       buttonTitle="เข้าสู่ระบบด้วย Facebook"
       btnType="facebook"
@@ -62,16 +64,17 @@ return (
       backgroundColor="#f5e7ea"
       onPress={() => { }}
     />
+    */}
 
-    <TouchableOpacity
-      style={styles.forgotButton}
-      onPress={() => navigation.navigate('Signup')}>
-      <Text style={styles.navButtonText}>
-        ยังไม่มีบัญชีผู้ใช้? สร้างบัญชีที่นี่
+      <TouchableOpacity
+        style={styles.forgotButton}
+        onPress={() => navigation.navigate('Signup')}>
+        <Text style={styles.navButtonText}>
+          ยังไม่มีบัญชีผู้ใช้? สร้างบัญชีที่นี่
         </Text>
-    </TouchableOpacity>
-  </View>
-);
+      </TouchableOpacity>
+    </View>
+  );
 };
 
 

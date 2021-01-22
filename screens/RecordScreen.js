@@ -1,17 +1,48 @@
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-//import CheckBox from '@react-native-community/checkbox';
+import { Checkbox } from 'react-native-paper';
+import { Picker } from '@react-native-community/picker';
 
-import CheckBoxes from '../components/CheckBox';
-import DropdownPicker from '../components/DropdownPicker';
+const Item = Picker.Item;
 
-const RecordScreen = ({ navigation}) => {
-    const [check, setCheck] = useState(0);
+const RecordScreen = ({ navigation }) => {
 
-    const [count, setCount] = useState(0);
-    const onPress = () => setCount(prevCount => prevCount + 1);
+    const chkData = [
+        { label: 1, damage: 0, name: '1 ใจเต้นเร็วและรัว', value: false },
+        { label: 2, damage: 0, name: '2 เหงื่อแตก', value: false },
+        { label: 3, damage: 0, name: '3 ตัวสั่น', value: false },
+        { label: 4, damage: 0, name: '4 อึดอัดหายใจไม่ออก หายใจได้แบบสั้นๆ', value: false },
+        { label: 5, damage: 0, name: '5 หายใจติดขัดไม่สะดวก', value: false },
+        { label: 6, damage: 0, name: '6 รู้สึกมึนงง โคลงเคลง วิงเวียนศรีษะเป็นลม', value: false },
+        { label: 7, damage: 0, name: '7 รู้สึกหนาวๆ ร้อนๆ', value: false },
+        { label: 8, damage: 0, name: '8 ตัวชาหรือเป็นเหน็บ', value: false },
+        { label: 9, damage: 0, name: '9 รู้สึกไม่เป็นตัวของตัวเอง', value: false },
+        { label: 10, damage: 0, name: '10 กลัวที่จะเสียการควบคุมหรือเสียสติ', value: false },
+        { label: 11, damage: 0, name: '11 กลัวว่าอาจตายได้', value: false }
+    ]
 
-     
+    let chkTrue;
+
+    //CheckBox
+    const [arrChk, setArrChk] = useState(chkData)
+    const onChkBoxChange = (index) => {
+        let newArrChk = [...arrChk]
+        newArrChk[index].value = !newArrChk[index].value;
+        setArrChk(newArrChk)
+        chkTrue = arrChk.filter((chk) => chk.value)
+        //chkLabelTrue = chkTrue
+    }
+    
+    //Damage
+    const [valueDam, setValueDam] = useState(0);
+    const [arrDam, setArrDam] = useState(chkData)
+    const onDamageChange = (index, value) => {
+        let newArrDam = [...arrDam]
+        newArrChk[index].damage = value;
+        setArrChk(newArrChk)
+        let chkTrue = arrChk.filter((chk) => chk.value)
+        setChkTrueCount(chkTrue.length)
+    }
 
     return (
         <ScrollView>
@@ -34,115 +65,40 @@ const RecordScreen = ({ navigation}) => {
                             <Text style={styles.text}>ความรุนแรง</Text>
                         </View>
 
-                        <View style={styles.checkBoxContainer}>
-                            <CheckBoxes />
-                            <View style={styles.textContainer}>
-                                <Text style={styles.text}>1 ใจเต้นเร็วและรัว</Text>
+                        {/* ลิสต์อาการ */}
+                        {arrChk.map((chk, index) => (
+                            <View key={index.toString()} style={styles.checkBoxContainer}>
+                                <Checkbox
+                                    status={chk.value ? 'checked' : 'unchecked'}
+                                    onPress={() => {
+                                        onChkBoxChange(index)
+                                    }}
+                                />
+                                <View style={styles.textContainer}>
+                                    <Text style={styles.text}>{chk.name}</Text>
+                                </View>
+                                <View style={styles.pickerContainer} >
+                                    <Picker
+                                        selectedValue={valueDam}
+                                        onValueChange={(v) => setValueDam(v)}
+                                        mode="dropdown"
+                                    >
+                                        <Item label="0" value= {0} />
+                                        <Item label="1" value= {1} />
+                                        <Item label="2" value= {2} />
+                                        <Item label="3" value= {3} />
+                                        <Item label="4" value= {4} />
+                                        <Item label="5" value= {5} />
+                                        <Item label="6" value= {6} />
+                                        <Item label="7" value= {7} />
+                                        <Item label="8" value= {8} />
+                                        <Item label="9" value= {9} />
+                                        <Item label="10" value= {10} />
+                                    </Picker>
+                                </View>
                             </View>
-                            <View style={styles.pickerContainer} >
-                                <DropdownPicker />
-                            </View>
-                        </View>
+                        ))}
 
-                        <View style={styles.checkBoxContainer}>
-                            <CheckBoxes />
-                            <View style={styles.textContainer}>
-                                <Text style={styles.text}>2 เหงื่อแตก</Text>
-                            </View>
-                            <View style={styles.pickerContainer}>
-                                <DropdownPicker />
-                            </View>
-                        </View>
-
-                        <View style={styles.checkBoxContainer}>
-                            <CheckBoxes />
-                            <View style={styles.textContainer}>
-                                <Text style={styles.text}>3 ตัวสั่น</Text>
-                            </View>
-                            <View style={styles.pickerContainer}>
-                                <DropdownPicker />
-                            </View>
-                        </View>
-
-                        <View style={styles.checkBoxContainer}>
-                            <CheckBoxes />
-                            <View style={styles.textContainer}>
-                                <Text style={styles.text}>4 อึดอัดหายใจไม่ออก หายใจได้แบบสั้นๆ</Text>
-                            </View>
-                            <View style={styles.pickerContainer}>
-                                <DropdownPicker />
-                            </View>
-                        </View>
-
-                        <View style={styles.checkBoxContainer}>
-                            <CheckBoxes />
-                            <View style={styles.textContainer}>
-                                <Text style={styles.text}>5 หายใจติดขัดไม่สะดวก</Text>
-                            </View>
-                            <View style={styles.pickerContainer}>
-                                <DropdownPicker />
-                            </View>
-                        </View>
-
-                        <View style={styles.checkBoxContainer}>
-                            <CheckBoxes />
-                            <View style={styles.textContainer}>
-                                <Text style={styles.text}>6 รู้สึกมึนงง โคลงเคลง วิงเวียนศรีษะเป็นลม</Text>
-                            </View>
-                            <View style={styles.pickerContainer}>
-                                <DropdownPicker />
-                            </View>
-                        </View>
-
-                        <View style={styles.checkBoxContainer}>
-                            <CheckBoxes />
-                            <View style={styles.textContainer}>
-                                <Text style={styles.text}>7 รู้สึกหนาวๆ ร้อน</Text>
-                            </View>
-                            <View style={styles.pickerContainer}>
-                                <DropdownPicker />
-                            </View>
-                        </View>
-
-                        <View style={styles.checkBoxContainer}>
-                            <CheckBoxes />
-                            <View style={styles.textContainer}>
-                                <Text style={styles.text}>8 ตัวชาหรือเป็นเหน็บ</Text>
-                            </View>
-                            <View style={styles.pickerContainer}>
-                                <DropdownPicker />
-                            </View>
-                        </View>
-
-                        <View style={styles.checkBoxContainer}>
-                            <CheckBoxes />
-                            <View style={styles.textContainer}>
-                                <Text style={styles.text}>9 รู้สึกเหมือนตกอยู่ในความฝันเหมือนไม่เป็นตัวของตัวเอง</Text>
-                            </View>
-                            <View style={styles.pickerContainer}>
-                                <DropdownPicker />
-                            </View>
-                        </View>
-
-                        <View style={styles.checkBoxContainer}>
-                            <CheckBoxes />
-                            <View style={styles.textContainer}>
-                                <Text style={styles.text}>10 กลัวที่จะเสียการควบคุมหรือเสียสติ</Text>
-                            </View>
-                            <View style={styles.pickerContainer}>
-                                <DropdownPicker />
-                            </View>
-                        </View>
-
-                        <View style={styles.checkBoxContainer}>
-                            <CheckBoxes />
-                            <View style={styles.textContainer}>
-                                <Text style={styles.text}>11 กลัวว่าอาจตายได้</Text>
-                            </View>
-                            <View style={styles.pickerContainer}>
-                                <DropdownPicker />
-                            </View>
-                        </View>
                         <TouchableOpacity
                             activeOpacity={0.6}
                             onPress={() => navigation.navigate("Report")}
@@ -156,7 +112,9 @@ const RecordScreen = ({ navigation}) => {
                     </View>
                     <TouchableOpacity
                         activeOpacity={0.6}
-                        onPress={() => navigation.navigate("Summary")}
+                        onPress={() => navigation.navigate("Summary",{
+                            chkTrue: chkTrue
+                        })}
                     >
                         <View style={styles.button} >
                             <Text style={{ fontSize: 20, fontWeight: 'bold' }}>บันทึก</Text>

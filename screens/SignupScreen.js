@@ -15,7 +15,7 @@ const SignupScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>สร้างบัญชีผู้ใหม่</Text>
+      <Text style={styles.text}>สร้างบัญชีผู้ใช้ใหม่</Text>
 
       <FormInput
         labelValue={email}
@@ -60,6 +60,7 @@ const SignupScreen = ({ navigation }) => {
     
     */}
 
+      {/* 
       <SocialButton
         buttonTitle="ลงทะเบียนด้วย Facebook"
         btnType="facebook"
@@ -75,6 +76,7 @@ const SignupScreen = ({ navigation }) => {
         backgroundColor="#f5e7ea"
         onPress={() => { }}
       />
+      */}
 
       <TouchableOpacity
         style={styles.navButton}

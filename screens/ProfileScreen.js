@@ -4,9 +4,8 @@ import { Avatar, Caption, Title, Text, TouchableRipple } from 'react-native-pape
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { AuthContext } from '../navigation/AuthProvider';
-import Email from '../screens/SigninScreen';
 
-const ProfileScreen = () => {
+const ProfileScreen = ({navigation}) => {
   const {user, logout} = useContext(AuthContext);
 
   return (
@@ -39,13 +38,13 @@ const ProfileScreen = () => {
         </View>
         <View style={styles.row}>
           <Icon name="email" color="#777777" size={20} />
-          <Text style={{ color: "#777777", marginLeft: 20 }}></Text>
+          <Text style={{ color: "#777777", marginLeft: 20 }}>sanlim@email.com</Text>
         </View>
       </View>
 
       <View style={styles.profileContainer}>
 
-        <TouchableOpacity onPress={() => { }}>
+        <TouchableOpacity onPress={() => navigation.navigate("EditProfile") }>
           <View style={styles.profileItem}>
             <Icon name="account-edit" color="#FF6347" size={25} />
             <Text style={styles.profileItemText}>แก้ไขข้อมูลส่วนตัว</Text>

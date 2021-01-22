@@ -1,9 +1,9 @@
-import React, { useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Checkbox } from 'react-native-paper';
 import { useFocusEffect } from '@react-navigation/native';
 
 const Checkboxes = () => {
-  const [checked, setChecked] = React.useState(false);
+  const [checked, setChecked] = useState(false);
 
   useFocusEffect(
     useCallback(() => {
@@ -17,7 +17,7 @@ const Checkboxes = () => {
     <Checkbox
       status={checked ? 'checked' : 'unchecked'}
       onPress={() => {
-        setChecked(!checked);
+        setChecked(!checked)
       }}
     />
   );

@@ -1,11 +1,63 @@
 import React, { useState } from 'react';
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-//import CheckBox from '@react-native-community/checkbox';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View, Alert } from 'react-native';
+import { Checkbox } from 'react-native-paper';
 
-import CheckBoxes from '../components/CheckBox';
+const PanicTestScreen = ({ navigation }) => {
+    const chkData_1 = [
+        { name: '1 ใจเต้นเร็วและรัว', value: false },
+        { name: '2 เหงื่อแตก', value: false },
+        { name: '3 ตัวสั่น', value: false },
+        { name: '4 อึดอัดหายใจไม่ออก หายใจได้แบบสั้นๆ', value: false },
+        { name: '5 หายใจติดขัดไม่สะดวก', value: false },
+        { name: '6 รู้สึกมึนงง โคลงเคลง วิงเวียนศรีษะเป็นลม', value: false },
+        { name: '7 รู้สึกหนาวๆ ร้อนๆ', value: false },
+        { name: '8 ตัวชาหรือเป็นเหน็บ', value: false },
+        { name: '9 รู้สึกไม่เป็นตัวของตัวเอง', value: false },
+        { name: '10 กลัวที่จะเสียการควบคุมหรือเสียสติ', value: false },
+        { name: '11 กลัวว่าอาจตายได้', value: false }
+    ]
 
+    const chkData_2 = [
+        {
+            name: 'ยังคงรู้สึกวิตกกังวลเกี่ยวกับอาการแพนิคที่เกิดขึ้นไปแล้วหรือกังวลถึงผลที่เกิดขึ้นตามมา เช่นการเสียการควบคุมตนเอง อาการเสียสติ อาการหัวใจวาย'
+            , value: false
+        },
+        {
+            name: 'มีพฤติกรรมที่เปลี่ยนไปอย่างเห็นได้ชัด เช่น หลีกเลี่ยงสถานการณ์ที่จะทำให้เกิดอาการแพนิคไม่ออกกำลังกายเลี่ยงสถานการณ์ที่ไม่คุ้นเคย เป็นต้น',
+            value: false
+        }
+    ]
 
-const PanicTestScreen = ({navigation}) => {
+    const [chkTrueCount, setChkTrueCount] = useState(0)
+    const [chkTrueCount_2, setChkTrueCount_2] = useState(0)
+
+    const [arrChk_1, setArrChk_1] = useState(chkData_1)
+    const onChkBoxChange = (index) => {
+        let newArrChk = [...arrChk_1]
+        newArrChk[index].value = !newArrChk[index].value;
+        setArrChk_1(newArrChk)
+        let chkTrue = arrChk_1.filter((chk) => chk.value)
+        setChkTrueCount(chkTrue.length)
+    }
+
+    const [arrChk_2, setArrChk_2] = useState(chkData_2)
+    const onChkBoxChange_2 = (index) => {
+        let newArrChk = [...arrChk_2]
+        newArrChk[index].value = !newArrChk[index].value;
+        setArrChk_2(newArrChk)
+        let chkTrue = arrChk_2.filter((chk) => chk.value)
+        setChkTrueCount_2(chkTrue.length)
+    }
+
+    console.log(chkTrueCount, chkTrueCount_2);
+    
+    // const onDamageChange = (index,value) => {
+    //     let newArrChk = [...arrChk]
+    //     newArrChk[index].damage = value;
+    //     setArrChk(newArrChk)
+    //     let chkTrue = arrChk.filter((chk) => chk.value)
+    //     setChkTrueCount(chkTrue.length)
+    // }
 
     return (
         <ScrollView>
@@ -24,7 +76,6 @@ const PanicTestScreen = ({navigation}) => {
                         <Text
                             style={{
                                 fontSize: 17,
-                                //fontWeight: 'bold',
                                 padding: 5,
                                 margin: 5
                             }}
@@ -32,61 +83,19 @@ const PanicTestScreen = ({navigation}) => {
                             {'\t'}{'\t'}โรคแพนิคเป็นอาการที่เกิดขึ้นแบบจู่โจม รู้สึกกลัวหรือตื่นตระหนกอย่างฉับพลันภายในไม่กี่นาที
                             โดยระหว่างที่ท่านมีอาการแพนิค ท่านมีอาการต่างๆเหล่านี้ร่วมด้วยอย่างน้อย 4 อย่างหรือไม่
                         </Text>
+                        {/* ลิสต์อาการ */}
 
-                        <View style={styles.checkBoxContainer}>
-                            <CheckBoxes />
-                            <Text style={styles.text}>1 ใจเต้นเร็วและรัว</Text>
-                        </View>
-
-                        <View style={styles.checkBoxContainer}>
-                            <CheckBoxes />
-                            <Text style={styles.text}>2 เหงื่อแตก</Text>
-                        </View>
-
-                        <View style={styles.checkBoxContainer}>
-                            <CheckBoxes />
-                            <Text style={styles.text}>3 ตัวสั่น</Text>
-                        </View>
-
-                        <View style={styles.checkBoxContainer}>
-                            <CheckBoxes />
-                            <Text style={styles.text}>4 อึดอัดหายใจไม่ออก หายใจได้แบบสั้นๆ</Text>
-                        </View>
-
-                        <View style={styles.checkBoxContainer}>
-                            <CheckBoxes />
-                            <Text style={styles.text}>5 หายใจติดขัดไม่สะดวก</Text>
-                        </View>
-
-                        <View style={styles.checkBoxContainer}>
-                            <CheckBoxes />
-                            <Text style={styles.text}>6 รู้สึกมึนงง โคลงเคลง วิงเวียนศรีษะเป็นลม</Text>
-                        </View>
-
-                        <View style={styles.checkBoxContainer}>
-                            <CheckBoxes />
-                            <Text style={styles.text}>7 รู้สึกหนาวๆ ร้อนๆ</Text>
-                        </View>
-
-                        <View style={styles.checkBoxContainer}>
-                            <CheckBoxes />
-                            <Text style={styles.text}>8 ตัวชาหรือเป็นเหน็บ</Text>
-                        </View>
-
-                        <View style={styles.checkBoxContainer}>
-                            <CheckBoxes />
-                            <Text style={styles.text}>9 รู้สึกเหมือนตกอยู่ในความฝันเหมือน{'\n'}ไม่เป็นตัวของตัวเอง</Text>
-                        </View>
-
-                        <View style={styles.checkBoxContainer}>
-                            <CheckBoxes />
-                            <Text style={styles.text}>10 กลัวที่จะเสียการควบคุมหรือเสียสติ</Text>
-                        </View>
-
-                        <View style={styles.checkBoxContainer}>
-                            <CheckBoxes />
-                            <Text style={styles.text}>11 กลัวว่าอาจตายได้</Text>
-                        </View>
+                        {arrChk_1.map((chk, index) => (
+                            <View key={index.toString()} style={styles.checkBoxContainer}>
+                                <Checkbox
+                                    status={chk.value ? 'checked' : 'unchecked'}
+                                    onPress={() => {
+                                        onChkBoxChange(index)
+                                    }}
+                                />
+                                <Text style={styles.text}>{chk.name}</Text>
+                            </View>
+                        ))}
 
                     </View>
 
@@ -110,27 +119,28 @@ const PanicTestScreen = ({navigation}) => {
                             ไม่ว่าจะข้อใดข้อหนึ่งหรือทั้งสองข้อเป็นระยะเวลา 1 เดือนหรือมากกว่าบ้างไหม
                         </Text>
 
-                        <View style={styles.checkBoxContainer2}>
-                            <CheckBoxes />
-                            <Text style={styles.text}>
-                                ยังคงรู้สึกวิตกกังวลเกี่ยวกับอาการแพนิคที่เกิดขึ้นไปแล้วหรือกังวลถึงผลที่เกิดขึ้นตามมา เช่น
-                                การเสียการควบคุมตนเอง อาการเสียสติ อาการหัวใจวาย
-                            </Text>
-                        </View>
-
-                        <View style={styles.checkBoxContainer2}>
-                            <CheckBoxes />
-                            <Text style={styles.text}>
-                                มีพฤติกรรมที่เปลี่ยนไปอย่างเห็นได้ชัด เช่น หลีกเลี่ยงสถานการณ์ที่จะทำให้เกิดอาการแพนิค
-                                ไม่ออกกำลังกายเลี่ยงสถานการณ์ที่ไม่คุ้นเคย เป็นต้น
-                            </Text>
-                        </View>
+                        {arrChk_2.map((chk, index) => (
+                            <View key={index.toString()} style={styles.checkBoxContainer2}>
+                                <Checkbox
+                                    status={chk.value ? 'checked' : 'unchecked'}
+                                    onPress={() => {
+                                        onChkBoxChange_2(index)
+                                    }}
+                                />
+                                <Text style={styles.text}>{chk.name}</Text>
+                            </View>
+                        ))}
 
                     </View>
 
                     <TouchableOpacity
                         activeOpacity={0.6}
-                        onPress={() => navigation.navigate("Result")}
+                        onPress={() => {
+                            navigation.navigate('Result', {
+                              chkTrueCount: chkTrueCount,
+                              chkTrueCount_2: chkTrueCount_2
+                            });
+                          }}
                     >
                         <View style={styles.button} >
                             <Text style={{ fontSize: 20, fontWeight: 'bold' }}>ประเมินผล</Text>
